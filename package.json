@@ -1,0 +1,61 @@
+{
+  "name": "@bj.anderson/ng-schematics",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "My Angular schematics.",
+  "author": "BJ Anderson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bjanderson/ng-schematics.git"
+  },
+  "schematics": "./dist/collection.json",
+  "types": "./dist/index.d.ts",
+  "keywords": [
+    "schematics"
+  ],
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts,json"
+    }
+  },
+  "scripts": {
+    "prebuild": "rimraf dist/",
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "copy 'src/**/*.json' 'src/**/files/*' 'src/**/optionalFiles/*' 'dist/'",
+    "prebuild:test": "rimraf test/",
+    "build:test": "tsc -p tsconfig.spec.json",
+    "postbuild:test": "copy 'src/**/*.json' 'src/**/files/*' 'src/**/optionalFiles/*' 'test/'",
+    "prepack": "npm run build",
+    "test": "npm run build:test && jasmine test/**/*_spec.js",
+    "prepush": "npm run build",
+    "push": "npm run build && npm publish --access public",
+    "push:major": "npm version major --no-git-tag-version && npm run push",
+    "push:minor": "npm version minor --no-git-tag-version && npm run push",
+    "push:patch": "npm version patch --no-git-tag-version && npm run push",
+    "watch": "npm-watch"
+  },
+  "devDependencies": {
+    "@angular-devkit/core": "9.1.0",
+    "@angular-devkit/schematics": "9.1.0",
+    "@angular-devkit/schematics-cli": "0.901.0",
+    "@angular/cli": "9.1.0",
+    "@schematics/angular": "9.1.0",
+    "@types/jasmine": "3.5.10",
+    "@types/node": "13.9.8",
+    "copy": "0.3.2",
+    "jasmine": "3.5.0",
+    "npm-watch": "0.6.0",
+    "rimraf": "3.0.2",
+    "rxjs": "6.5.4",
+    "typescript": "3.8.3"
+  },
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ]
+}
