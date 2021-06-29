@@ -94,55 +94,71 @@ function addJestDependenciesToPackageJson(): Rule {
 function updateTsConfig(): Rule {
   console.log('updateTsConfig');
   return (tree: Tree, context: SchematicContext) => {
-    updateTsConfigAppJson(tree);
-    updateTsConfigSpecJson(tree);
-    return tree;
+    try{
+      updateTsConfigAppJson(tree);
+      updateTsConfigSpecJson(tree);
+      return tree;
+    } catch(err) {
+      console.log('remove comments from your json files');
+    }
   };
 }
 
 function updateTsConfigAppJson(tree: Tree) {
   console.log('updateTsConfigAppJson');
-  const fileContents = tree.read(paths.tsconfigAppJson);
-  const text = fileContents != null ? fileContents.toString() : '';
-  const json = JSON.parse(text);
-  const tsconfigAppJson = JSON.stringify(json, null, 2);
-  tree.overwrite(paths.tsconfigAppJson, tsconfigAppJson);
+  try {
+    const fileContents = tree.read(paths.tsconfigAppJson);
+    const text = fileContents != null ? fileContents.toString() : '';
+    const json = JSON.parse(text);
+    const tsconfigAppJson = JSON.stringify(json, null, 2);
+    tree.overwrite(paths.tsconfigAppJson, tsconfigAppJson);
+  } catch(err) {
+    console.log('remove comments from your json files');
+  }
 }
 
 function updateTsConfigSpecJson(tree: Tree) {
   console.log('updateTsConfigSpecJson');
-  const fileContents = tree.read(paths.tsconfigSpecJson);
-  const text = fileContents != null ? fileContents.toString() : '';
-  const json = JSON.parse(text);
-  json.compilerOptions.allowJs = true;
-  json.compilerOptions.module = 'commonjs';
-  json.compilerOptions.types = ['jest'];
-  json.files = json.files.filter((d) => d !== 'src/test.ts');
-  const tsconfigSpecJson = JSON.stringify(json, null, 2);
-  tree.overwrite(paths.tsconfigSpecJson, tsconfigSpecJson);
+  try {
+    const fileContents = tree.read(paths.tsconfigSpecJson);
+    const text = fileContents != null ? fileContents.toString() : '';
+    const json = JSON.parse(text);
+    json.compilerOptions.allowJs = true;
+    json.compilerOptions.module = 'commonjs';
+    json.compilerOptions.types = ['jest'];
+    json.files = json.files.filter((d) => d !== 'src/test.ts');
+    const tsconfigSpecJson = JSON.stringify(json, null, 2);
+    tree.overwrite(paths.tsconfigSpecJson, tsconfigSpecJson);
+  } catch(err) {
+    console.log('remove comments from your json files');
+  }
 }
 
 function updateAngularJson(): Rule {
   console.log('updateAngularJson');
   return (tree: Tree, context: SchematicContext) => {
-    const fileContents = tree.read(paths.angularJson);
-    const text = fileContents != null ? fileContents.toString() : '';
-    const json = JSON.parse(text);
-    const projectName = json.defaultProject;
+    try{
+      const fileContents = tree.read(paths.angularJson);
+      const text = fileContents != null ? fileContents.toString() : '';
+      const json = JSON.parse(text);
+      const projectName = json.defaultProject;
 
-    json.projects[projectName].architect.test = {
-      builder: '@angular-builders/jest:run',
-      options: {},
-    };
+      json.projects[projectName].architect.test = {
+        builder: '@angular-builders/jest:run',
+        options: {},
+      };
 
-    // these are my personal preference - feel free to comment them out
-    json.projects[projectName].architect.lint.options.format = 'stylish';
-    json.projects[projectName].architect.lint.options.force = true;
-    json.projects[projectName].architect.e2e.options.port = 4299;
+      // these are my personal preference - feel free to comment them out
+      json.projects[projectName].architect.lint.options.format = 'stylish';
+      json.projects[projectName].architect.lint.options.force = true;
+      json.projects[projectName].architect.e2e.options.port = 4299;
 
-    const angularJson = JSON.stringify(json, null, 2);
-    tree.overwrite(paths.angularJson, angularJson);
-    return tree;
+      const angularJson = JSON.stringify(json, null, 2);
+      tree.overwrite(paths.angularJson, angularJson);
+      return tree;
+    } catch(err) {
+      console.log('remove comments from your json files');
+    }
   };
 }
 
