@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SetupStylesSchema",
+  "$id": "SetupStylesSchema",
   "title": "Setup Styles Schema",
   "type": "object",
   "properties": {},

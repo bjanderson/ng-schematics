@@ -33,6 +33,7 @@ export default function(options: any): Rule {
 }
 
 function deleteFiles(): Rule {
+  console.log('deleteFiles');
   return (tree: Tree, context: SchematicContext): Tree => {
     safeFileDelete(tree, paths.karmaConf);
     safeFileDelete(tree, paths.testTs);
@@ -41,6 +42,7 @@ function deleteFiles(): Rule {
 }
 
 function updatePackageJson(): Rule {
+  console.log('updatePackageJson');
   return (tree: Tree, context: SchematicContext): Tree => {
     const fileContents = tree.read(paths.packageJson);
     let text = fileContents != null ? fileContents.toString() : '';
@@ -64,6 +66,7 @@ function updatePackageJson(): Rule {
 }
 
 function addJestDependenciesToPackageJson(): Rule {
+  console.log('addJestDependenciesToPackageJson');
   return (tree: Tree, context: SchematicContext): Tree => {
     const dependencies = [
       'jest',
@@ -89,6 +92,7 @@ function addJestDependenciesToPackageJson(): Rule {
 }
 
 function updateTsConfig(): Rule {
+  console.log('updateTsConfig');
   return (tree: Tree, context: SchematicContext) => {
     updateTsConfigAppJson(tree);
     updateTsConfigSpecJson(tree);
@@ -97,6 +101,7 @@ function updateTsConfig(): Rule {
 }
 
 function updateTsConfigAppJson(tree: Tree) {
+  console.log('updateTsConfigAppJson');
   const fileContents = tree.read(paths.tsconfigAppJson);
   const text = fileContents != null ? fileContents.toString() : '';
   const json = JSON.parse(text);
@@ -105,6 +110,7 @@ function updateTsConfigAppJson(tree: Tree) {
 }
 
 function updateTsConfigSpecJson(tree: Tree) {
+  console.log('updateTsConfigSpecJson');
   const fileContents = tree.read(paths.tsconfigSpecJson);
   const text = fileContents != null ? fileContents.toString() : '';
   const json = JSON.parse(text);
@@ -117,6 +123,7 @@ function updateTsConfigSpecJson(tree: Tree) {
 }
 
 function updateAngularJson(): Rule {
+  console.log('updateAngularJson');
   return (tree: Tree, context: SchematicContext) => {
     const fileContents = tree.read(paths.angularJson);
     const text = fileContents != null ? fileContents.toString() : '';
@@ -140,6 +147,7 @@ function updateAngularJson(): Rule {
 }
 
 function addJestConf(): Rule {
+  console.log('addJestConf');
   return (tree: Tree, _context: SchematicContext) => {
     const source = url('./files');
     const rules = [template({ dot: '.' })];

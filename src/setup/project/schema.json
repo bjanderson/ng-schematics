@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SetupProjectSchema",
+  "$id": "SetupProjectSchema",
   "title": "Setup Project Schema",
   "type": "object",
   "properties": {},

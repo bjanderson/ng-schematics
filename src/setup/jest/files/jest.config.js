@@ -13,12 +13,21 @@ module.exports = {
     'text-summary'
   ],
 
+  globals: {
+    'ts-jest': {
+      isolatedModules: true
+    }
+  },
+
   testPathIgnorePatterns: [
+    '<rootDir>/.vscode/',
     '<rootDir>/coverage/',
     '<rootDir>/dist/',
     '<rootDir>/e2e/',
     '<rootDir>/node_modules/',
-    '<rootDir>/src/app/*.(js|scss)'
+    '<rootDir>/src/app/*.(html|js|scss)$',
+    '<rootDir>/(index\.ts)$'
+    '<rootDir>/(module\.ts)$'
   ],
 
   testMatch: [
