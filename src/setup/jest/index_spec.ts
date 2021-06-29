@@ -6,9 +6,9 @@ import { paths } from '../../utils';
 const collectionPath = path.join(__dirname, '../../collection.json');
 
 describe('setup-jest', () => {
-  it('generates the expected jest config file', () => {
+  it('generates the expected jest config file', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic('setup-jest', {}, Tree.empty());
+    const tree = await runner.runSchematicAsync('setup-jest', {}, Tree.empty()).toPromise();
 
     expect(tree.files).toEqual([paths.jestConf]);
   });

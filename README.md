@@ -1,12 +1,12 @@
 # Install
 
-    npm i @bj.anderson/schematics
+    npm i @bjanderson/schematics
 
 # Schematics
 
 ## setup-jest
 
-    ng generate @bj.anderson/schematics:setup-jest
+    ng generate @bjanderson/schematics:setup-jest
 
 ### Parameters
 
@@ -24,7 +24,7 @@ Creates `src/jest.config.js`
 
 ## setup-prettier
 
-    ng generate @bj.anderson/schematics:setup-prettier
+    ng generate @bjanderson/schematics:setup-prettier
 
 ### Parameters
 
@@ -40,7 +40,7 @@ Creates `prettier.config.js`
 
 ## setup-styles
 
-    ng generate @bj.anderson/schematics:setup-styles
+    ng generate @bjanderson/schematics:setup-styles
 
 ### Parameters
 
@@ -66,7 +66,7 @@ Generates the following files
 
 ## setup-project
 
-    ng generate @bj.anderson/schematics:setup-project
+    ng generate @bjanderson/schematics:setup-project
 
 ### Parameters
 
@@ -82,7 +82,7 @@ Calls the other setup schematics
 
 ## component
 
-    ng generate @bj.anderson/schematics:component -n <component-name> -p <html-prefix>
+    ng generate @bjanderson/schematics:component -n <component-name> -p <html-prefix>
 
 ### Parameters
 
@@ -113,7 +113,7 @@ If `module` or `route` are set, it also generates a module file at:
 
 ## dialog
 
-    ng generate @bj.anderson/schematics:dialog  -n <dialog-name> -p <html-prefix>
+    ng generate @bjanderson/schematics:dialog  -n <dialog-name> -p <html-prefix>
 
 ### Parameters
 
@@ -143,7 +143,7 @@ Generates the following files
 
 ## model
 
-    ng generate @bj.anderson/schematics:model -n <model-name>
+    ng generate @bjanderson/schematics:model -n <model-name>
 
 ### Parameters
 
@@ -168,7 +168,7 @@ Generates the following files
 
 ## service
 
-    ng generate @bj.anderson/schematics:service -n <service-name>
+    ng generate @bjanderson/schematics:service -n <service-name>
 
 ### Parameters
 

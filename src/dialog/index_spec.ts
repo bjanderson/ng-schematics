@@ -6,13 +6,13 @@ import { paths } from '../utils';
 const collectionPath = path.join(__dirname, '../collection.json');
 
 describe('dialog', () => {
-  it('generates the expected files when not given -dialog', () => {
+  it('generates the expected files when not given -dialog', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic(
+    const tree = await runner.runSchematicAsync(
       'dialog',
       { name: 'test', prefix: 'tst' },
       Tree.empty()
-    );
+    ).toPromise();
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test-dialog/test-dialog-body.component.spec.ts`,
@@ -28,13 +28,13 @@ describe('dialog', () => {
     ]);
   });
 
-  it('generates the expected files when given -dialog', () => {
+  it('generates the expected files when given -dialog', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic(
+    const tree = await runner.runSchematicAsync(
       'dialog',
       { name: 'test-dialog', prefix: 'tst' },
       Tree.empty()
-    );
+    ).toPromise();
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test-dialog/test-dialog-body.component.spec.ts`,

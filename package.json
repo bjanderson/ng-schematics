@@ -1,9 +1,12 @@
 {
-  "name": "@bj.anderson/ng-schematics",
-  "version": "1.0.0",
+  "name": "@bjanderson/ng-schematics",
+  "version": "0.0.0",
   "license": "MIT",
   "description": "My Angular schematics.",
   "author": "BJ Anderson",
+  "publishConfig": {
+    "@bjanderson:registry": "https://npm.pkg.github.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bjanderson/ng-schematics.git"
@@ -30,27 +33,26 @@
     "postbuild:test": "copy 'src/**/*.json' 'src/**/files/*' 'src/**/optionalFiles/*' 'test/'",
     "prepack": "npm run build",
     "test": "npm run build:test && jasmine test/**/*_spec.js",
-    "prepush": "npm run build",
-    "push": "npm run build && npm publish --access public",
-    "push:major": "npm version major --no-git-tag-version && npm run push",
-    "push:minor": "npm version minor --no-git-tag-version && npm run push",
-    "push:patch": "npm version patch --no-git-tag-version && npm run push",
+    "prepublish": "npm run build",
+    "push:major": "npm version major",
+    "push:minor": "npm version minor",
+    "push:patch": "npm version patch",
     "watch": "npm-watch"
   },
   "devDependencies": {
-    "@angular-devkit/core": "9.1.0",
-    "@angular-devkit/schematics": "9.1.0",
-    "@angular-devkit/schematics-cli": "0.901.0",
-    "@angular/cli": "9.1.0",
-    "@schematics/angular": "9.1.0",
-    "@types/jasmine": "3.5.10",
-    "@types/node": "13.9.8",
+    "@angular-devkit/core": "12.1.0",
+    "@angular-devkit/schematics": "12.1.0",
+    "@angular-devkit/schematics-cli": "12.1.0",
+    "@angular/cli": "12.1.0",
+    "@schematics/angular": "12.1.0",
+    "@types/jasmine": "3.7.7",
+    "@types/node": "15.12.5",
     "copy": "0.3.2",
-    "jasmine": "3.5.0",
-    "npm-watch": "0.6.0",
+    "jasmine": "3.7.0",
+    "npm-watch": "0.10.0",
     "rimraf": "3.0.2",
-    "rxjs": "6.5.4",
-    "typescript": "3.8.3"
+    "rxjs": "7.1.0",
+    "typescript": "4.3.4"
   },
   "files": [
     "dist/",

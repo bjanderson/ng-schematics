@@ -1,4 +1,4 @@
-import { DEFAULT_STRING } from '@bj.anderson/utils';
+import { DEFAULT_STRING } from '@bjanderson/utils';
 import { <%= classify(name) %> } from './<%= dasherize(name) %>.model';
 
 describe('<%= classify(name) %>', () => {

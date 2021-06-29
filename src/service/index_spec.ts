@@ -6,13 +6,13 @@ import { paths } from '../utils';
 const collectionPath = path.join(__dirname, '../collection.json');
 
 describe('service', () => {
-  it('generates the expected service files', () => {
+  it('generates the expected service files', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic(
+    const tree = await runner.runSchematicAsync(
       'service',
       { name: 'test-service' },
       Tree.empty()
-    );
+    ).toPromise();
 
     expect(tree.files).toEqual([
       `/${paths.servicesDir}/index.ts`,

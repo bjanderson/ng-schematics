@@ -1,4 +1,4 @@
-import { getObject, getString } from '@bj.anderson/utils';
+import { getObject, getString } from '@bjanderson/utils';
 
 export class <%= classify(name) %> {
 

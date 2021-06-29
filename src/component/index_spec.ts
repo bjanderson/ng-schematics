@@ -6,13 +6,13 @@ import { paths } from '../utils';
 const collectionPath = path.join(__dirname, '../collection.json');
 
 describe('component', () => {
-  it('does not create a module file when module === false', () => {
+  it('does not create a module file when module === false', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic(
+    const tree = await runner.runSchematicAsync(
       'component',
       { name: 'test-component', prefix: 'tst', module: false },
       Tree.empty()
-    );
+    ).toPromise();
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test/test.component.spec.ts`,
@@ -23,13 +23,13 @@ describe('component', () => {
     ]);
   });
 
-  it('generates the module file by default', () => {
+  it('generates the module file by default', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic(
+    const tree = await runner.runSchematicAsync(
       'component',
       { name: 'test-component', prefix: 'tst' },
       Tree.empty()
-    );
+    ).toPromise();
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test/test.component.spec.ts`,
@@ -41,13 +41,13 @@ describe('component', () => {
     ]);
   });
 
-  it('generates the module file when route is true', () => {
+  it('generates the module file when route is true', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic(
+    const tree = await runner.runSchematicAsync(
       'component',
       { name: 'test-component', prefix: 'tst', route: true },
       Tree.empty()
-    );
+    ).toPromise();
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test/test.component.spec.ts`,
