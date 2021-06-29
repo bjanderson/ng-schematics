@@ -26,7 +26,7 @@ module.exports = {
     '<rootDir>/e2e/',
     '<rootDir>/node_modules/',
     '<rootDir>/src/app/*.(html|js|scss)$',
-    '<rootDir>/(index\.ts)$'
+    '<rootDir>/(index\.ts)$',
     '<rootDir>/(module\.ts)$'
   ],
 
