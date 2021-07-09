@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { <%= classify(dialogBodyName) %>Component } from './<%= dasherize(dialogBodyName) %>.component';
 
 @Component({
@@ -9,13 +9,9 @@ import { <%= classify(dialogBodyName) %>Component } from './<%= dasherize(dialog
   templateUrl: './<%= dasherize(dialogName) %>.component.html',
 })
 export class <%= classify(dialogName) %>Component {
-  @Input() public showButton = true;
-
   private dialogRef: MatDialogRef<<%= classify(dialogBodyName) %>Component>;
 
-  constructor(
-    private dialog: MatDialog
-  ) {}
+  constructor(private dialog: MatDialog) {}
 
   public open(): void {
     const config = new MatDialogConfig();

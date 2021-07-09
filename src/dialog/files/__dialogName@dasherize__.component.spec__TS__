@@ -1,7 +1,7 @@
 import { <%= classify(dialogName) %>Component } from './<%= dasherize(dialogName) %>.component';
 
 const dialog: any = {
-  open: () => {}
+  open: () => {},
 };
 
 let component: any;

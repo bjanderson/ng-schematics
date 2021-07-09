@@ -1,11 +1,11 @@
 import { <%= classify(dialogBodyName) %>Component } from './<%= dasherize(dialogBodyName) %>.component';
 
 const dialogRef: any = {
-  close: () => undefined
+  close: () => undefined,
 };
 
 const data: any = {
-  parent: {}
+  parent: {},
 };
 
 let component: any;

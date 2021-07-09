@@ -1,11 +1,7 @@
-<div class="<%= dasherize(dialogName) %>" *ngIf="showButton">
-
-  <button
-    aria-label="Open <%= titleify(dialogName) %>"
-    mat-raised-button
-    color="primary"
-    (click)="open()">
-    Open <%= titleify(dialogName) %>
-  </button>
-
-</div>
+<button
+  aria-label="Open <%= titleify(dialogName) %>"
+  mat-raised-button
+  color="primary"
+  (click)="open()">
+  Open <%= titleify(dialogName) %>
+</button>
