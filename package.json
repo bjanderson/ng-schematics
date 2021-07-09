@@ -1,6 +1,6 @@
 {
   "name": "@bjanderson/ng-schematics",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "license": "MIT",
   "description": "My Angular schematics.",
   "author": "BJ Anderson",
