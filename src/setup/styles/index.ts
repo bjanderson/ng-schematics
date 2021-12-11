@@ -1,9 +1,4 @@
-import {
-  camelize,
-  capitalize,
-  classify,
-  dasherize,
-} from '@angular-devkit/core/src/utils/strings';
+import { camelize, capitalize, classify, dasherize } from '@angular-devkit/core/src/utils/strings';
 import {
   apply,
   chain,
@@ -40,7 +35,7 @@ const stringUtils = {
   dasherize,
 };
 
-export default function(options: any): Rule {
+export default function (options: any): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const rules = [
       deleteFiles(),
@@ -124,15 +119,10 @@ function updateAngularJson(): Rule {
     const text = fileContents != null ? fileContents.toString() : '';
     const json = JSON.parse(text);
     const projectName = json.defaultProject;
-    const styles =
-      json.projects[projectName].architect.build.options.styles || [];
+    const styles = json.projects[projectName].architect.build.options.styles || [];
     let i = styles.findIndex((s: string) => s === 'src/styles.scss');
     if (i > -1) {
-      styles.splice(
-        i,
-        0,
-        './node_modules/@fortawesome/fontawesome-free/css/all.min.css'
-      );
+      styles.splice(i, 0, './node_modules/@fortawesome/fontawesome-free/css/all.min.css');
       i += 1;
       styles.splice(i, 0, 'src/material.scss');
     }
@@ -153,24 +143,16 @@ function addMaterialIconRegistryToAppModule(): Rule {
     const importText = `MatIconModule`;
     const providersText = `MatIconRegistry`;
 
-    if (!isImported(source, importModule, importPath)) {
-      const change = insertImport(
-        source,
-        paths.appModule,
-        importModule,
-        importPath
-      );
+    if (!isImported(source as any, importModule, importPath)) {
+      const change = insertImport(source as any, paths.appModule, importModule, importPath);
       if (change) {
         const recorder = tree.beginUpdate(paths.appModule);
-        recorder.insertLeft(
-          (change as InsertChange).pos,
-          (change as InsertChange).toAdd
-        );
+        recorder.insertLeft((change as InsertChange).pos, (change as InsertChange).toAdd);
         tree.commitUpdate(recorder);
 
         source = getTsSourceFile(tree, paths.appModule);
         let metadataChanges = addSymbolToNgModuleMetadata(
-          source,
+          source as any,
           paths.appModule,
           'imports',
           importText
@@ -185,7 +167,7 @@ function addMaterialIconRegistryToAppModule(): Rule {
 
         source = getTsSourceFile(tree, paths.appModule);
         metadataChanges = addSymbolToNgModuleMetadata(
-          source,
+          source as any,
           paths.appModule,
           'providers',
           providersText
@@ -202,9 +184,7 @@ function addMaterialIconRegistryToAppModule(): Rule {
 
     let buffer = tree.read(paths.appModule);
     if (!buffer) {
-      throw new SchematicsException(
-        `Could not read file (${paths.appModule}).`
-      );
+      throw new SchematicsException(`Could not read file (${paths.appModule}).`);
     }
 
     let contents = buffer.toString();
@@ -229,12 +209,7 @@ function getTsSourceFile(tree: Tree, path: string): ts.SourceFile {
     throw new SchematicsException(`Could not read file (${path}).`);
   }
   const content = buffer.toString();
-  const source = ts.createSourceFile(
-    path,
-    content,
-    ts.ScriptTarget.Latest,
-    true
-  );
+  const source = ts.createSourceFile(path, content, ts.ScriptTarget.Latest, true);
 
   return source;
 }
