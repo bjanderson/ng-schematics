@@ -1,0 +1,53 @@
+<!-- if you need to filter table data
+<div class="header">
+  <input
+    matInput
+    type="text"
+    [(ngModel)]="dataSource.filter"
+    (ngModelChange)="dataSource.applyFilter()">
+</div> -->
+
+<div class="<%= dasherize(name) %>">
+
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? dataSource.toggleAll() : null"
+          [checked]="dataSource.allSelected"
+          [indeterminate]="dataSource.someSelected"
+          [aria-label]="dataSource.getCheckboxLabel()"
+        ></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="$event ? dataSource.toggle(row) : null"
+          [checked]="dataSource.isSelected(row)"
+          [aria-label]="dataSource.getCheckboxLabel(row)"
+        ></mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> value </th>
+      <td mat-cell *matCellDef="let row"> {{row.value}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+      *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)"
+    ></tr>
+
+  </table>
+
+  <mat-paginator
+    [class.hidden]="!dataSource.showPaginator()"
+    [length]="dataSource.total | async"
+    [pageSizeOptions]="dataSource.pageSizes"
+    showFirstLastButtons
+  ></mat-paginator>
+
+</div>

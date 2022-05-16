@@ -1,0 +1,12 @@
+import { Abstract<%= classify(serverSide) %>DataSource, AlertService } from '@bjanderson/ng-common';
+import { Observable } from 'rxjs';
+
+export class <%= classify(name) %>DataSource extends Abstract<%= classify(serverSide) %>DataSource<<%= classify(name) %>> {
+  constructor(protected alertService: AlertService, private apiService: SomeApiService) {
+    super(alertService);
+  }
+
+  protected requestData(request: any): Observable<<%= classify(name) %>[]> {
+    return this.apiService.getData(request);
+  }
+}

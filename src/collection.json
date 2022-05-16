@@ -36,6 +36,11 @@
       "factory": "./component/index",
       "schema": "./component/schema.json"
     },
+    "data-source": {
+      "description": "Create a new data source.",
+      "factory": "./data-source/index",
+      "schema": "./data-source/schema.json"
+    },
     "dialog": {
       "description": "Create a new dialog.",
       "factory": "./dialog/index",
@@ -55,6 +60,16 @@
       "description": "Create a new table component.",
       "factory": "./table/index",
       "schema": "./table/schema.json"
+    },
+    "table-with-data-source": {
+      "description": "Create a new table with data source.",
+      "factory": "./table-with-data-source/index",
+      "schema": "./table-with-data-source/schema.json"
+    },
+    "table-with-server-side-data-source": {
+      "description": "Create a new table with server-side data source.",
+      "factory": "./table-with-server-side-data-source/index",
+      "schema": "./table-with-server-side-data-source/schema.json"
     }
   }
 }

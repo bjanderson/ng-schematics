@@ -1,0 +1,64 @@
+import { SelectionModel } from '@angular/cdk/collections';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { AlertService } from '@bjanderson/ng-common';
+import { <%= classify(datasource) %>DataSource } from 'src/app/data-sources';
+import { SomeApiService } from 'src/app/services';
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: '<%= dasherize(prefix) %>-<%= dasherize(name) %>',
+  styleUrls: ['./<%= dasherize(name) %>.component.scss'],
+  templateUrl: './<%= dasherize(name) %>.component.html'
+})
+export class <%= classify(name) %>Component implements OnInit {
+  public dataSource = new <%= classify(datasource) %>DataSource(this.alertService, this.apiService);
+  public displayedColumns: string[] = ['select', 'value'];
+
+  public paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) public set matPaginator(paginator: MatPaginator) {
+    this.paginator = paginator;
+    if (this.dataSource != null && this.dataSource.paginator !== this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
+  }
+
+  public sort: MatSort;
+  @ViewChild(MatSort, {static: false}) public set matSort(sort: MatSort) {
+    this.sort = sort;
+    // this.sort.sort({id: 'createdDate', start: 'desc'} as MatSortable)
+    if (this.dataSource != null && this.dataSource.sort !== this.sort) {
+      this.dataSource.sort = this.sort;
+    }
+  }
+
+  constructor(private alertService: AlertService, private apiService: SomeApiService) {}
+
+  ngOnInit(): void {
+    this.initDataSource();
+  }
+
+  initDataSource(): void {
+    // this.dataSource.filterPredicate = this.filterPredicate.bind(this);
+    // this.dataSource.sortingDataAccessor = this.sortingDataAccessor.bind(this);
+    this.dataSource.load();
+  }
+
+  // if you need to filter the table...
+  // private filterPredicate(item: SomeItem, filter: string): boolean {
+  //   const text = filter.trim().toLocaleLowerCase();
+  //   const displayText = item.displayText.trim().toLocaleLowerCase();
+  //   return displayText.inclueds(text);
+  // }
+
+  // if you need to customize table data for sorting...
+  // private sortingDataAccessor(item: SomeItem, prop: string): string | number {
+  //   switch (prop) {
+  //     case 'prop1':
+  //       return item[prop1].doSomethingSpecial();
+  //     default:
+  //       return item[prop]
+  //   }
+  // }
+}

@@ -13,6 +13,7 @@ const testTs = `${srcDir}/test.ts`;
 const appDir = `${srcDir}/app`;
 const appModule = `${appDir}/app.module.ts`;
 const componentsDir = `${appDir}/components`;
+const dataSourcesDir = `${appDir}/data-sources`;
 const modelsDir = `${appDir}/models`;
 const servicesDir = `${appDir}/services`;
 const storeDir = `${appDir}/store`;
@@ -21,6 +22,7 @@ export const paths = {
   angularJson,
   appDir,
   appModule,
+  dataSourcesDir,
   componentsDir,
   jestConf,
   karmaConf,

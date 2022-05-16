@@ -1,0 +1,43 @@
+import { of } from 'rxjs';
+import { <%= classify(name) %> } from './<%= dasherize(name) %>.data-source';
+
+const alertService: any = {
+  errorResponse: () => undefined,
+};
+
+const apiService: any = {
+  getData: () => of([new <%= classify(name) %>()]),
+}
+
+let component: any;
+function init(): void {
+  component = new new <%= classify(name) %>DataSource(alertService, apiService);
+}
+
+describe('<%= classify(name) %>DataSource', () => {
+  describe('constructor()', () => {
+    beforeEach(() => {
+      init();
+    });
+
+    it('should create the component', () => {
+      expect(component).toBeDefined();
+    });
+  });
+
+  describe('requestData()', () => {
+    beforeEach(() => {
+      init();
+    });
+
+    it('has a function named requestData', () => {
+      expect(typeof component.requestData).toEqual('function');
+    });
+
+    it('calls apiService.getData()', () => {
+      const spy = jest.spyOn(component.apiService, 'getData');
+      component.requestData();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+});

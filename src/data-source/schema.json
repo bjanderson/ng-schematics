@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "DataSourceSchema",
+  "title": "Data Source Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "alias": "n",
+      "type": "string",
+      "description": "The name of your data source",
+      "x-prompt": "Please enter a name for your data source"
+    },
+    "isServerSide": {
+      "alias": "s",
+      "default": false,
+      "type": "boolean",
+      "description": "Is this a server-side paginated data source?",
+      "x-prompt": "Is this a server-side paginated data source?"
+    }
+  },
+  "required": ["name"]
+}

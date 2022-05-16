@@ -1,0 +1,63 @@
+import { of } from 'rxjs';
+import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
+
+const alertService: any = {
+  success: () => undefined,
+  errorResponse: () => undefined,
+}
+
+
+const apiService: any = {
+  getData: () => of([]),
+}
+
+let component: any;
+function init(): void {
+  component = new <%= classify(name) %>Component();
+  component.dataSource = { load: () => undefined };
+}
+
+describe('<%= classify(name) %>Component', () => {
+  describe('constructor()', () => {
+    beforeEach(() => {
+      init();
+    });
+
+    it('should create the component', () => {
+      expect(component).toBeDefined();
+    });
+  });
+
+  describe('ngOnInit()', () => {
+    beforeEach(() => {
+      init();
+      component.initDataSource = () => undefined;
+    });
+
+    it('is a function', () => {
+      expect(typeof component.ngOnInit).toEqual('function');
+    });
+
+    it('calls initDataSource() when the tableData is changed', () => {
+      const spy = jest.spyOn(component, 'initDataSource');
+      component.ngOnInit();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('initDataSource()', () => {
+    beforeEach(() => {
+      init();
+    });
+
+    it('is a function', () => {
+      expect(typeof component.initDataSource).toEqual('function');
+    });
+
+    it('calls dataSource.load()', () => {
+      const spy = jest.spyOn('component.dataSource, 'load');
+      component.initDataSource();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+});
