@@ -1,17 +1,13 @@
 import { of } from 'rxjs';
 import { <%= classify(name) %> } from './<%= dasherize(name) %>.data-source';
 
-const alertService: any = {
-  errorResponse: () => undefined,
-};
-
 const apiService: any = {
   getData: () => of([new <%= classify(name) %>()]),
 }
 
 let component: any;
 function init(): void {
-  component = new new <%= classify(name) %>DataSource(alertService, apiService);
+  component = new new <%= classify(name) %>DataSource(apiService);
 }
 
 describe('<%= classify(name) %>DataSource', () => {

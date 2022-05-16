@@ -1,12 +1,6 @@
 import { of } from 'rxjs';
 import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
 
-const alertService: any = {
-  success: () => undefined,
-  errorResponse: () => undefined,
-}
-
-
 const apiService: any = {
   getData: () => of([]),
 }

@@ -2,7 +2,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AlertService } from '@bjanderson/ng-common';
 import { <%= classify(datasource) %>DataSource } from 'src/app/data-sources';
 import { SomeApiService } from 'src/app/services';
 
@@ -13,7 +12,7 @@ import { SomeApiService } from 'src/app/services';
   templateUrl: './<%= dasherize(name) %>.component.html'
 })
 export class <%= classify(name) %>Component implements OnInit {
-  public dataSource = new <%= classify(datasource) %>DataSource(this.alertService, this.apiService);
+  public dataSource = new <%= classify(datasource) %>DataSource(this.apiService);
   public displayedColumns: string[] = ['select', 'value'];
 
   public paginator: MatPaginator;
@@ -33,7 +32,7 @@ export class <%= classify(name) %>Component implements OnInit {
     }
   }
 
-  constructor(private alertService: AlertService, private apiService: SomeApiService) {}
+  constructor(private apiService: SomeApiService) {}
 
   ngOnInit(): void {
     this.initDataSource();
