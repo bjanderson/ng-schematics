@@ -7,7 +7,7 @@ const apiService: any = {
 
 let component: any;
 function init(): void {
-  component = new new <%= classify(name) %>DataSource(apiService);
+  component = new <%= classify(name) %>DataSource(apiService);
 }
 
 describe('<%= classify(name) %>DataSource', () => {

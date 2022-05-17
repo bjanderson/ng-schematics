@@ -7,7 +7,7 @@ const apiService: any = {
 
 let component: any;
 function init(): void {
-  component = new <%= classify(name) %>Component();
+  component = new <%= classify(name) %>Component(apiService);
   component.dataSource = { load: () => undefined };
 }
 
@@ -49,7 +49,7 @@ describe('<%= classify(name) %>Component', () => {
     });
 
     it('calls dataSource.load()', () => {
-      const spy = jest.spyOn('component.dataSource, 'load');
+      const spy = jest.spyOn(component.dataSource, 'load');
       component.initDataSource();
       expect(spy).toHaveBeenCalled();
     });
