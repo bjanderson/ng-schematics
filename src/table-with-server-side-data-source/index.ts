@@ -24,7 +24,7 @@ const stringUtils = {
 export default function (options: any): Rule {
   return (tree: Tree, context: SchematicContext) => {
     options = setupOptions(options);
-    options.datasoource = options.name.replace('-table', '');
+    options.datasource = options.name.replace('-table', '');
     const dataSourceOptions = { ...options };
     dataSourceOptions.name = dataSourceOptions.datasoource;
 
