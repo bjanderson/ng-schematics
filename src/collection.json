@@ -1,16 +1,6 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "setup-angular-material": {
-      "description": "add @angular/material",
-      "factory": "./setup/angular-material/index",
-      "schema": "./setup/angular-material/schema.json"
-    },
-    "setup-angular-material-schematic": {
-      "description": "add @angular/material",
-      "factory": "./setup/angular-material-schematic/index",
-      "schema": "./setup/angular-material-schematic/schema.json"
-    },
     "setup-jest": {
       "description": "Replace Karma with Jest",
       "factory": "./setup/jest/index",
