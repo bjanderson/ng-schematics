@@ -9,8 +9,7 @@ describe('data-source', () => {
   it('generates the expected data-source files', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
     const tree = await runner
-      .runSchematicAsync('data-source', { name: 'test-data-source' }, Tree.empty())
-      .toPromise();
+      .runSchematic('data-source', { name: 'test-data-source' }, Tree.empty());
 
     expect(tree.files).toEqual([
       `/${paths.dataSourcesDir}/index.ts`,

@@ -1,10 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: '<%= dasherize(prefix) %>-<%= dasherize(name) %>',
+  standalone: true,
   styleUrls: ['./<%= dasherize(name) %>.component.scss'],
   templateUrl: './<%= dasherize(name) %>.component.html',
+  imports: [CommonModule],
 })
 export class <%= classify(name) %>Component {
   constructor() {}

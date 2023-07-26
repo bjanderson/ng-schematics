@@ -1,14 +1,24 @@
 import { SelectionModel } from '@angular/cdk/collections';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
+import { MatSortModule, MatSort } from '@angular/material/sort';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: '<%= dasherize(prefix) %>-<%= dasherize(name) %>',
+  standalone: true,
   styleUrls: ['./<%= dasherize(name) %>.component.scss'],
-  templateUrl: './<%= dasherize(name) %>.component.html'
+  templateUrl: './<%= dasherize(name) %>.component.html',
+  imports: [
+    CommonModule,
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+  ],
 })
 export class <%= classify(name) %>Component implements OnChanges {
 

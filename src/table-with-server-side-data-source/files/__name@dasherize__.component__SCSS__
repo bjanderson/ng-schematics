@@ -3,7 +3,7 @@
     table {
       width: 100%;
 
-      .mat-column-select {
+      .select-column {
         overflow: initial;
       }
     }

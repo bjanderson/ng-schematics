@@ -40,19 +40,19 @@
     "watch": "npm-watch"
   },
   "devDependencies": {
-    "@angular-devkit/core": "15.0.2",
-    "@angular-devkit/schematics": "15.0.2",
-    "@angular-devkit/schematics-cli": "15.0.2",
-    "@angular/cli": "15.0.2",
-    "@schematics/angular": "15.0.2",
-    "@types/jasmine": "4.3.1",
-    "@types/node": "18.11.11",
+    "@angular-devkit/core": "16.1.5",
+    "@angular-devkit/schematics": "16.1.5",
+    "@angular-devkit/schematics-cli": "16.1.5",
+    "@angular/cli": "16.1.5",
+    "@schematics/angular": "16.1.5",
+    "@types/jasmine": "4.3.5",
+    "@types/node": "20.4.5",
     "copy": "0.3.2",
-    "jasmine": "4.5.0",
+    "jasmine": "5.1.0",
     "npm-watch": "0.11.0",
-    "rimraf": "3.0.2",
-    "rxjs": "7.6.0",
-    "typescript": "4.8.4"
+    "rimraf": "5.0.1",
+    "rxjs": "7.8.1",
+    "typescript": "5.1.6"
   },
   "files": [
     "dist/",

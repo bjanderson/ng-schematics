@@ -7,7 +7,7 @@ const collectionPath = path.join(__dirname, '../../collection.json');
 describe('setup-project', () => {
   it('sets up a new project', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner.runSchematicAsync('setup-project', {}, Tree.empty()).toPromise();
+    const tree = await runner.runSchematic('setup-project', {}, Tree.empty());
 
     expect(true).toEqual(true);
   });

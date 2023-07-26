@@ -8,7 +8,7 @@ const collectionPath = path.join(__dirname, '../../collection.json');
 describe('setup-jest', () => {
   it('generates the expected jest config file', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner.runSchematicAsync('setup-jest', {}, Tree.empty()).toPromise();
+    const tree = await runner.runSchematic('setup-jest', {}, Tree.empty());
 
     expect(tree.files).toEqual([paths.jestConf]);
   });

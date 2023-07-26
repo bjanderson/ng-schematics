@@ -1,12 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { <%= classify(dialogBodyName) %>Component } from './<%= dasherize(dialogBodyName) %>.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: '<%= dasherize(prefix) %>-<%= dasherize(dialogName) %>',
+  standalone: true,
   styleUrls: ['./<%= dasherize(dialogName) %>.component.scss'],
   templateUrl: './<%= dasherize(dialogName) %>.component.html',
+  imports: [ CommonModule, FormsModule, MatButtonModule, MatDialogModule ]
 })
 export class <%= classify(dialogName) %>Component {
   private dialogRef: MatDialogRef<<%= classify(dialogBodyName) %>Component>;

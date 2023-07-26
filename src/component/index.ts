@@ -58,9 +58,6 @@ function setupOptions(options: any): any {
 function createFiles(options: any): Rule {
   return mergeWith(
     apply(url('./files'), [
-      filter(
-        (path) => !path.includes('.module') || options.module || options.route
-      ),
       template({
         ...fileExtensions,
         ...options,

@@ -8,11 +8,11 @@ const collectionPath = path.join(__dirname, '../collection.json');
 describe('service', () => {
   it('generates the expected service files', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner.runSchematicAsync(
+    const tree = await runner.runSchematic(
       'service',
       { name: 'test-service' },
       Tree.empty()
-    ).toPromise();
+    );
 
     expect(tree.files).toEqual([
       `/${paths.servicesDir}/index.ts`,
